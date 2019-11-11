@@ -5,35 +5,33 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
-
-
+import Buttons from '../Button';
 
 export default function Modal(props) {
-  const {openModal,handleCloseModal} = props;
+  const {openModal,handleCloseModal,Heading,children} = props;
   return (
     <div>
       <Dialog
         open={openModal}
         onClose={handleCloseModal}
         aria-labelledby="draggable-dialog-title"
+        fullWidth
       >
-        <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-          Subscribe
+        <DialogTitle style={{ cursor: 'move' }}>
+          {Heading}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
+            {children}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleCloseModal} color="primary">
+          <Buttons autoFocus onClick={handleCloseModal} color="secondary">
             Cancel
-          </Button>
-          <Button onClick={handleCloseModal} color="primary">
+          </Buttons>
+          <Buttons onClick={handleCloseModal} color="primary">
             Add
-          </Button>
+          </Buttons>
         </DialogActions>
       </Dialog>
     </div>
